@@ -1,0 +1,40 @@
+body {
+    margin:0px;
+}
+nav {
+    background-color: #0c4ca3;
+    /*padding: 10px;  khoảng cáck giữa các từ*/
+}
+ul {
+    display: flex;  /*Sắp xếp các phần tử theo hàng ngang*/
+    justify-content: center;  /*Xóa dấu chấm theo đầu dòng*/
+    list-style: none;  /*Căn giữa các phần tử con*/
+    /*gap: 20px;  Khoảng cách giữa các phần tử con*/
+}
+li {
+    padding: 15px;
+}
+.border{
+    border-right: 1px solid grey;
+}
+.danhmuc-lienket {
+    color: white;
+    text-decoration: none;
+    font-family: Roboto, Arial, Tahoma;
+
+}
+.banner-qc{
+    display: flex;
+    justify-content: center;
+    margin: 10px 0px;
+}
+.qc{
+    display: flex;
+    justify-content: space-between;
+}
+header{
+    border-bottom: 10px soild #f1f1f2;
+}
+.h1 {
+    border-bottom: 10px soild #f1f1f2;
+}
