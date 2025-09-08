@@ -1,0 +1,16 @@
+
+header {
+    background-color: darkgray;
+}
+.baihat {
+    display: flex;          
+    align-items: center;    
+    gap: 12px;              
+    margin-bottom: 20px;   
+}
+.baihat .tenbai {
+    margin: 0;
+}
+.baihat .luotnghe {
+    margin:2px 0 0 0;
+}

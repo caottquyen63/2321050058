@@ -5,13 +5,13 @@ nav {
     background-color: #0c4ca3;
     /*padding: 10px;  khoảng cáck giữa các từ*/
 }
-ul {
+.gioithieu {
     display: flex;  /*Sắp xếp các phần tử theo hàng ngang*/
-    justify-content: center;  /*Xóa dấu chấm theo đầu dòng*/
-    list-style: none;  /*Căn giữa các phần tử con*/
-    /*gap: 20px;  Khoảng cách giữa các phần tử con*/
+    justify-content: center;  /*Căn giữa các phần tử con*/
+    list-style: none;  /*Xóa dấu chấm theo đầu dòng*/ 
+    /*gap: 20px;  /*Khoảng cách giữa các phần tử con*/
 }
-li {
+.gioithieu li {
     padding: 15px;
 }
 .border{
@@ -21,7 +21,6 @@ li {
     color: white;
     text-decoration: none;
     font-family: Roboto, Arial, Tahoma;
-
 }
 .banner-qc{
     display: flex;
@@ -33,8 +32,178 @@ li {
     justify-content: space-between;
 }
 header{
-    border-bottom: 10px soild #f1f1f2;
+    border-bottom: 10px solid #f1f1f2;
 }
-.h1 {
-    border-bottom: 10px soild #f1f1f2;
+
+/*TIN TỨC*/
+h1{
+    color: #0c4ca3;
+    border-bottom: 3px solid #c7c7ce;
+    padding-left: 340px;
+    font-weight: normal;
+}
+.anhtapthe-thongtin {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* 4 cột ngang */
+    gap: 20px; /* khoảng cách giữa các phần tử */
+    margin: 0 340px;
+}
+.anhtapthe img {
+    width: 100%;
+    height: auto; /* chiều cao ảnh đồng đều */
+    margin-bottom: 10px; /*cách anh và nội dung*/
+}
+.anhtapthe p {
+    font-weight:normal; /*bỏ in đậm*/
+    font-size: 16px; /*cỡ chữ*/
+    margin: 10px 0;
+    text-align: justify; /*cách đều 2 lề - justify: viết thẳng 2 mép ko lùi vào*/
+}
+.thongtin {
+    display: flex;
+    flex-wrap: wrap;   /* cho phép xuống hàng */
+    gap: 15px;         /* khoảng cách giữa các mục */
+}
+.thongtin li {
+    margin: 0;             /* bỏ margin dưới */
+    padding: 0;            /* bỏ padding trái */
+}
+.qkh{
+    display: flex;
+    flex-wrap: wrap;     /* cho phép xuống hàng */
+    justify-content:center; /*căn giữa*/
+}
+.anh-qkh img {
+    width: 195px;   /* chỉnh kích thước ảnh */
+    height: auto;
+}
+
+/*THÔNG BÁO*/
+.thongbao1{
+    background-color: #f1f1f2;
+}
+.thongbao{
+    display: flex;
+    margin: 0 340px;
+    gap: 20px;
+    flex:1; /*các phần tử con chiếm diện tích bằng nhay*/
+}
+.thongbao2 li {
+    margin-bottom: 20px;
+}
+
+/*THÔNG TIN TUYỂN SINH*/
+.modiachat {
+    display: flex;
+    justify-content:center; /*căn giữa*/
+    flex-wrap: wrap; /*cho phép xuông dòng*/
+    gap: 40px; 
+}
+.anh-modiachat{
+    width: 250px; /* chỉnh kích thước khối */
+}
+.anh-modiachat img {
+    width: 250px;   /* chỉnh kích thước ảnh */
+    height: auto;
+}
+
+/*HOẠT ĐỘNG SINH VIÊN*/
+.hoatdongsinhvien{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* 4 cột ngang */
+    gap: 20px; /* khoảng cách giữa các cột */
+    margin: 0 340px;
+}
+.sinhvien img {
+    width: 100%; /*độ rộng khối*/
+    height: auto; /* chiều cao can heo chiều rộng */
+    margin-bottom: 10px;
+}
+.sinhvien p {
+    font-weight:normal;
+    font-size: 16px;
+    margin: 10px 0;
+    text-align: justify;
+}
+
+.cachoatdong {
+    display: flex;
+    flex-wrap: wrap;   /* cho phép xuống hàng */
+    gap: 10px;         /* khoảng cách giữa các mục */
+}
+.cachoatdong li {
+    margin: 0;             /* bỏ margin dưới */
+    padding: 0;            /* bỏ padding trái */
+}
+
+/*ĐỐI TÁC*/
+.doitac {
+    display: flex;
+    justify-content: center;
+}
+.doitac img{
+    width: 200px;
+    height: auto;
+}
+.media {
+    background-color: black;
+    color:ghostwhite;
+    display: flex;
+    justify-content: center;
+    margin: 0 340px;
+}
+h3 {
+    border-bottom: 1px solid #f1f1f2;
+    font-size:x-large;
+    margin: 20px 40px;
+}
+.video1 {
+    border-right: 1px solid #f1f1f2;
+    margin: 40px 40px; 
+}
+.ttlienquan p {
+    border-bottom: 1px solid #f1f1f2;
+    margin: 20px 40px;   
+    font-size:x-large;
+}
+
+/*FOOTER*/
+h2{
+    font-weight:normal;
+}
+footer {
+    background-color: #0c4ca3 ;
+    color:white;
+    display:flex;
+    justify-content: center;
+}
+.mangxahoi{
+    margin: 0px 20px;
+}
+.anhonline {
+    margin: 0px 40px;
+}
+.sodotrang {
+    display:flex;
+    justify-content: space-between;
+    width: 100%;
+    border-bottom: 2px solid #f1f1f2;
+}
+.phongban{
+    margin: 15px 0px;
+}
+.thongtintruong{
+    text-align: right;
+}
+
+/*Thêm ô vuông cho thẻ */
+ul{
+    list-style: none;
+}
+ul li::before {
+  content: "■";      /* ký tự hình vuông */
+  color: #0c4ca3;       /* đổi màu */
+  font-size: 14px;
+  margin-right: 8px; /* cách chữ */
+  margin-bottom: 5px;
 }
