@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dăng nhập</title>
+
+</head>
+<style>
+    body{
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(146, 143, 143);
+    margin: 0;
+    color: rgb(0, 0, 0);
+    font-family: Arial, sans-serif;
+    }
+    main{
+        justify-content: center;
+        align-items: center;
+        width:30%;
+        background-color: white;
+    }
+    .dangnhap{
+        border-bottom: 1px solid grey;
+    }
+    .ten{
+        display:flex;
+        justify-content: space-between;
+    }
+    h3{
+        font-size: 3;
+    }
+    .signup{
+        display:flex;
+        justify-content:center;
+        background: green;
+        color: white;
+        Width: 80px;
+        border-radius: 10px;
+        padding: 5px;
+    }
+    .already {
+        display:flex;
+        justify-content:center;
+        color: rgb(48, 98, 236);
+    }
+</style>
+
+<body>
+    <header>
+        <b>Facebook</b>
+    </header>
+    <main>
+        <div class="dangnhap">
+            <h1>Create a new account</h1>
+            <p>It's quick and easy</p>
+        </div>
+         <br>
+        <div class="ten" >
+            <input type="text" name="firstname" placeholder="First name">
+            <input type="text" name="surname" placeholder="Surname">
+        </div>
+        <p class="tieude">Date of brith</p>
+        <div class="ten">
+            <input type="date" name="ngay" >
+            <input type="date" name="thang" >
+            <input type="date" name="nam" >
+        </div>
+        <p class="tieude">Gender</p>
+        <div class="gioitinh">
+            <input type="radio" name="gioitinh" value="nam"> Female 
+            <input type="radio" name="gioitinh" value="nu"> Male
+            <input type="radio" name="gioitinh" value="khac"> Custom
+        </div> <br>
+        <input type="text" name="email" placeholder="Mobile number or email address">
+        <br><br>
+        <input type="text" name="password" placeholder="New password">
+        <p class="thongtin">
+            People who use ...
+            <br><br>
+            By clicking...
+        </p>
+        <p class="signup">Sign Up</p>
+        <p class="already"> Already have an account?</p>
+    </main>
+
+    <footer>
+
+    </footer>
+</body>
+</html>

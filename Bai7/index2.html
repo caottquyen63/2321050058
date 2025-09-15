@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đăng Nhập</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<style>
+    body{
+        width: 70%;
+        background-color: aliceblue;
+    }
+    main{
+        display:flex;
+        justify-content: space-around;
+        background-color: white;
+    }
+    .login{
+        display:flex;
+        justify-content:center;
+        background: rgb(52, 99, 216);
+        color: white;
+        Width: 80px;
+        border-radius: 5px;
+        padding: 5px;
+    }
+    
+</style>
+<body>
+    <main>
+        <div>
+            <img src="../Bai7/img/phim/beautyandthebeaets.jpg" alt="">
+            <p><u>Create an account</u></p>
+        </div>
+        <div class="thongtin">
+            <h1>Log In</h1>
+            <div class="ten">
+                <i class="fa fa-user" aria-hidden="true"></i>
+                <input type="text" name="yourname" placeholder="Yourname">
+            </div><br>
+            <div class="matkhau">
+                <input type="text" name="password" placeholder="Password">
+            </div>
+            <input type="radio" name="luuthongtin" value=""> Remember me
+            <p class="login"> Log In </p>
+            <div>
+                <span>Or login with </span>
+                <span><i class="fa fa-facebook-square" aria-hidden="true"></i></span>
+                <span><i class="fa fa-twitter-square" aria-hidden="true"></i></span>
+                <span><i class="fa fa-google-plus-square" aria-hidden="true"></i></span>
+            </div>
+        </div>
+    </main>
+</body>
+</html>
