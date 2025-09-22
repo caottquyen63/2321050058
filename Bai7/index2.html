@@ -8,13 +8,18 @@
 </head>
 <style>
     body{
-        width: 70%;
+        display:flex;
+        justify-content: center;
+        align-items: center;
         background-color: aliceblue;
+        margin: 100px 0;
     }
     main{
         display:flex;
         justify-content: space-around;
+        width: 70%;
         background-color: white;
+        padding:50px;
     }
     .login{
         display:flex;
@@ -24,6 +29,14 @@
         Width: 80px;
         border-radius: 5px;
         padding: 5px;
+    }
+    .ten {
+        border-bottom: 1px solid #3a3a3a;
+    }
+    .ten input {
+        border: none; /*xóa viền bảng*/
+        outline: none; /*xóa viền khi nhập*/
+        flex: 1; /*ô input bằng với khối bên ngoài*/
     }
     
 </style>
@@ -39,10 +52,11 @@
                 <i class="fa fa-user" aria-hidden="true"></i>
                 <input type="text" name="yourname" placeholder="Yourname">
             </div><br>
-            <div class="matkhau">
+            <div class="ten">
+                <i class="fa fa-lock" aria-hidden="true"></i>
                 <input type="text" name="password" placeholder="Password">
-            </div>
-            <input type="radio" name="luuthongtin" value=""> Remember me
+            </div><br>
+            <input type="checkbox" name="luuthongtin" value=""> Remember me
             <p class="login"> Log In </p>
             <div>
                 <span>Or login with </span>

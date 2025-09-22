@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bài 1</title>
+</head>
+<body>
+    <style>
+        header{
+            display:flex;
+            justify-content: space-between;
+        }
+        header p {
+            background-color:rgb(106, 210, 210);
+            border-radius: 10px;
+            padding: 10px;
+        }
+        main {
+            display:flex;
+            justify-content: space-between;
+        }
+        .home {
+            flex:1;
+        }
+        .thongtinchinh {
+            flex:3;
+        }
+        .thongtinchinh1 {
+            display:flex;
+            justify-content: space-between;
+        }
+        .noidung {
+            border: 1px solid rgb(83, 83, 83); /*viền ngoài*/
+            padding: 20px;
+            border-radius: 10px;
+        }
+        table{
+            border-collapse: collapse; /* gộp viền để liền nhau */
+        }
+        td {
+            border-bottom: 1px solid rgb(83, 83, 83) ;
+        }
+        .dong1 {
+            border-top: 1px solid rgb(83, 83, 83) ;
+        }
+        .dong{
+            background: rgb(162, 159, 159) ;
+        }
+    </style>
+    
+    <header>
+        <img src="image.png" alt="">
+        <p>Log in</p>
+    </header>
+    <main>
+        <div class="home">
+            <p>Home</p>
+            <p><b>API Platform</b></p>
+            <p><b>API Pricing</b></p>
+            <p><b>Codex</b></p>
+            <p><b>Open Madels</b></p>
+            <p><b>Community</b></p>
+        </div>
+        <div class="thongtinchinh">
+            <div class="thongtinchinh1">
+                <div class="noidung">
+                    <p><b>Permissive license</b></p>
+                    <p>dưieuiehdkdjdyyyyw</p>
+                </div>
+                <div class="noidung">
+                    <p><b>Permissive license</b></p>
+                    <p>dưieuiehdkdjdyyyyw</p>
+                </div>
+                <div class="noidung">
+                    <p><b>Permissive license</b></p>
+                    <p>dưieuiehdkdjdyyyyw</p>
+                </div>
+                <div class="noidung">
+                    <p><b>Permissive license</b></p>
+                    <p>dưieuiehdkdjdyyyyw</p>
+                </div>
+            </div> <br><br>
+            <h1 >Model performance</h1> <br><br>
+            <div class="bangthongtin">
+                <table border="0" width="100%"> <!-- 0 thì ko có viền, 1 thì có viền -->
+                    <tr class="dong1">
+                        <td></td>
+                        <td>gpt-oss-120b</td>
+                        <td>gpt-oss-20b</td>
+                        <td>OpenAI o3</td>
+                        <td>OpenAI o4-mini</td>
+                    </tr>
+                    <tr class="dong">
+                        <td>Reasoning & knowledge</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>MMLU</td>
+                        <td>90.0</td>
+                        <td>85.3</td>
+                        <td>93.4</td>
+                        <td>93.0</td>
+                    </tr>
+                    <tr>
+                        <td>QPQA Diamond</td>
+                        <td>80.1</td>
+                        <td>71.5</td>
+                        <td>83.3</td>
+                        <td>81.4</td>
+                    </tr>
+                    <tr>
+                        <td>Humanity's Last Exam</td>
+                        <td>19.0</td>
+                        <td>17.3</td>
+                        <td>24.9</td>
+                        <td>17.7</td>
+                    </tr>
+                    <tr class="dong">
+                        <td>Competition</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>AIME 2024</td>
+                        <td>96.6</td>
+                        <td>96.0</td>
+                        <td>96.2</td>
+                        <td>98.7</td>
+                    </tr>
+                    <tr>
+                        <td>AIME 2025</td>
+                        <td>97.9</td>
+                        <td>98.7</td>
+                        <td>98.4</td>
+                        <td>99.5
+                </table>
+            </div>
+        </div>
+    </main>
+
+</body>
+</html>

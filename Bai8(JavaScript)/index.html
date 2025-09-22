@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script src="script.js"></script>
+    <script>
+        //để viết chú thích js dùng kí tự //
+        document.writeln("Hello World" +"<br>");   //câu lệnh in ra màn hình  
+        // dấu + dùng để nối chuỗi
+
+        let hoTen = "Cao Thi Thu Quyen";  //tạo 1 biến : let tênbiến
+        document.writeln(hoTen + "<br>");
+
+        //hằng
+        const pi = 3.14;
+
+        let soThuNhat = 10;
+        let soThuHai = 5;
+        let ketQua;
+        // + - * / %
+        ketQua = soThuNhat + soThuHai; //phép cộng
+        document.writeln(ketQua);
+        ketQua = soThuNhat - soThuHai; //phép trừ
+        document.writeln(ketQua);
+        ketQua = soThuNhat / soThuHai; //phép chia
+        document.writeln(ketQua);
+        ketQua = soThuNhat * soThuHai; //phép nhân
+        document.writeln(ketQua);
+        ketQua = soThuNhat % soThuHai; //chia lấy dư
+        document.writeln(ketQua);
+        ketQua++; // ++ tăng thêm 1 đơn vị; -- giảm đi 1 đơn vị
+        document.writeln(ketQua + "<br>");
+
+        soThuNhat += soThuHai;  //2 dòng cùng 1 nghĩa
+        soThuNhat = soThuNhat + soThuHai;
+        document.writeln(soThuNhat);
+
+        //cộng chuỗi
+        let soThuBa  = 10;
+        let soThuTu = "10";
+        // soThuBa += soThuTu;
+        document.writeln(soThuBa == soThuTu);  // == ko quan tâm để kiều dl chỉ quan tâm giá trị
+        document.writeln(soThuBa === soThuTu);  // === giống nhau cả kiểu dl và giá trị mới TRUE
+        document.writeln(soThuBa != soThuTu); // != khác nhau về
+        document.writeln(!(soThuBa !== soThuTu ) + "<br>");  //!== khác cả kiểu dl và giá trị mới TRUE
+
+        let thongTinSinhVien = {
+            hoTen: "Cao Thị Thu Quyên", //chỉ dùng dấu phẩy (,)
+            tuoi: 20,
+            gioiTinh: true,
+            lop: "Hệ Thống Thông Tin K68"
+        }
+        let diaChiQuyen = {
+            thanhPho: "Hà Nam",
+            quanHuyen: "Kim Bảng",
+            duong: "Lý Thường Kiệt",
+            soNha: 111
+        }
+        let namNay = 2025;
+        thongTinSinhVien.diaChi = diaChiQuyen;
+        document.writeln("Xin chào bạn " + thongTinSinhVien.hoTen + " " 
+        + " Lớp " + thongTinSinhVien.lop
+        + " nhà ở" + " " + thongTinSinhVien.diaChi.soNha 
+        + " Đường" + " " + thongTinSinhVien.diaChi.duong
+        + " Huyện:" + " " + thongTinSinhVien.diaChi.quanHuyen
+        + " Thành Phố:" + " " + thongTinSinhVien.diaChi.thanhPho
+        + " Năm Sinh:" + (namNay - thongTinSinhVien.tuoi));
+
+        let soThuNam = "10.56";
+        soThuNam = parseInt (soThuNam);//ép kiểu từ chuỗi sang số 
+        //parseInt: số nghuyên; parseFLoat: số thực
+        document.writeln((soThuNam));
+
+
+    </script>
+</body>
+</html>

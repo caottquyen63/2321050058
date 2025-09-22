@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bài 3</title>
+</head>
+<body>
+    <style>
+        header{
+            display:flex;
+            justify-content: space-between;
+        }
+        .login {
+            background-color:rgb(106, 210, 210);
+            border-radius: 10px;
+            padding: 10px;
+        }
+        main {
+            display:flex;
+            justify-content: space-between;
+        }
+        .home {
+            flex:1;
+        }
+        .thongtinchinh {
+            flex:3;
+            display:flex;
+            justify-content: space-between;
+        }
+        .get {
+            background: black;
+            color: white;
+            border-radius: 999px;
+            padding: 10px;
+        }
+        .anh {
+            display: grid;
+            grid-template-columns: 1fr 1fr; /* 2 cột bằng nhau */
+            gap: 20px; /* khoảng cách giữa 2 cột */
+        }
+        .anhtrai, .anhphai {
+            display: flex;
+            flex-direction: column; /* xếp dọc */
+            gap: 20px; /* khoảng cách giữa các ảnh */
+        }
+        
+
+        /* có thể chỉnh riêng từng ảnh nếu muốn */
+        .anh1 { margin-left: auto; width: 70%; height: 150px; }
+        .anh2 { height: 220px; }
+        .anh3 { height: 250px; }
+        .anh4 { height: 150px; }
+    </style>
+
+    <header>
+        <span><b>OpenAI</b></span>
+        <span class="login">Log In</span>
+    </header>
+    <main>
+         <div class="home">
+            <p>Home</p>
+            <p><b>API Platform</b></p>
+            <p><b>API Pricing</b></p>
+            <p><b>Codex</b></p>
+            <p><b>Open Madels</b></p>
+            <p><b>Community</b></p>
+        </div>
+        <div class="thongtinchinh">
+            <div class="codex">
+                <h1>Codex</h1>
+                <p>One agent forr everywhere you-included in ChatGPT Plus, Pro,Business, Edu, and Enterprise plans</p>
+                <span class="get">Get started</span>
+                <span>$ npm i -g @openai/codex</span>
+            </div>
+            <div class="anh">
+                <div class="anhtrai">
+                        <img class="anh1"src="../Ontap/anh1.png" alt="">
+                        <img class="anh2" src="../Ontap/anh2.png" alt="">
+                </div>
+                <div class="anhphai">
+                        <img class="anh3" src="../Ontap/anh3.png" alt="">
+                        <img class="anh4" src="../Ontap/anh4.png" alt="">
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
+</html>

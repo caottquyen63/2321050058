@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bài 4</title>
+</head>
+<body>
+    <style>
+        header{
+            display:flex;
+            justify-content: space-between;
+        }
+        .login {
+            background-color:rgb(106, 210, 210);
+            border-radius: 10px;
+            padding: 10px;
+        }
+        main {
+            display:flex;
+            justify-content: space-between;
+        }
+        .home {
+            flex:1;
+        }
+        .thongtinchinh {
+            flex:3;
+        }
+        .new {
+            display:flex;
+            justify-content: space-between;
+        }
+        .gioithieu {
+            display: flex;  /*Sắp xếp các phần tử theo hàng ngang*/
+            list-style: none;  /*Xóa dấu chấm theo đầu dòng*/ 
+            gap: 20px;  /*Khoảng cách giữa các phần tử con*/
+            margin-left: -40px;
+        }
+        .anh {
+            display:flex;
+            justify-content: space-between;
+            gap: 15px;
+        }
+        .anh img {
+            width:100%;
+        }
+    </style>
+    <header>
+        <span><b>OpenAI</b></span>
+        <span class="login">Log In</span>
+    </header>
+    <main>
+        <div class="home">
+            <p>Research</p>
+            <p>Safety</p>
+            <p>For Business</p>
+            <p>For Developers</p>
+            <p>ChatGPT</p>
+            <p>Sora</p>
+            <p>Stories</p>
+            <p>Company</p>
+            <p>News</p>
+        </div>
+        <div class="thongtinchinh">
+            <h1>News</h1>
+            <nav class="new">
+                <ul class="gioithieu">
+                    <li>All</li>
+                    <li>Company</li>
+                    <li>Research</li>
+                    <li>Product</li>
+                    <li>Safety</li>
+                    <li>Security</li>
+                    <li>Global Affairs</li>
+                </ul>
+                <ul class="gioithieu">
+                    <li>Filter</li>
+                    <li>Sort</li>
+                </ul>
+            </nav>
+            <div class="anh">
+                <div>
+                    <img src="../Ontap/Lunar.jpg" alt="">
+                    <div class="anh1">
+                        <p>Introducing Stargate UK</p>
+                        <span>Global Affairs</span>
+                        <span>Sep 16,2025</span>
+                    </div>
+                </div>
+                <div>
+                    <img src="../Ontap/Lunar.jpg" alt="">
+                    <div class="anh1">
+                        <p>Introducing Stargate UK</p>
+                        <span>Global Affairs</span>
+                        <span>Sep 16,2025</span>
+                    </div>
+                </div>
+                <div>
+                    <img src="../Ontap/Lunar.jpg" alt="">
+                    <div class="anh1">
+                        <p>Introducing Stargate UK</p>
+                        <span>Global Affairs</span>
+                        <span>Sep 16,2025</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    
+</body>
+</html>
