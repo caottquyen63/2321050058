@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let thongTinDonHang = {
+            maSanPham : "123456885",
+            thongTinKhachHang:{
+                hoTen: "Cao Thị Thu Quyên",
+                SDT: "0379013360",
+                trangThai: true,
+            },
+            danhSachSanPham :{
+                caPhe:{
+                    maSanPham: "sp01",
+                    tenSanPham: "caphe",
+                    soLuong: 5,
+                    giaTien: 100000
+                },
+                matCha : {
+                    maSanPham: "sp02",
+                    tenSanPham: "matcha",
+                    soLuong: 3,
+                    giaTien: 60000
+                },
+                traSua : {
+                    maSanPham: "sp03",
+                    tenSanPham: "Trà Sữa",
+                    soLuong: 2,
+                    giaTien: 50000
+                }
+            },
+            trangThaiThanhToan: true,
+            diaChi: "Kim Bảng, Hà Nam"
+        }
+        let danhSachSP = thongTinDonHang.danhSachSanPham;
+        tongDonHang = danhSachSP.caPhe.giaTien * danhSachSP.caPhe.soLuong
+        + danhSachSP.matCha.giaTien * danhSachSP.matCha.soLuong
+        + danhSachSP.traSua.giaTien * danhSachSP.traSua.soLuong;
+        document.writeln("Tổng giá trị đơn hàng: " + tongDonHang +"<br>");
+
+        //STRING
+        let hoTen = "Cao Thị Thu Quyên";
+        document.writeln(hoTen.length); // length: đếm ký tự của chuỗi
+        let myString = "Hello Kien";
+        document.writeln(myString[4]); //myString[]: lấy ký tủ trg chuỗi
+        document.writeln(myString.slice(1,4) + "<br>"); //.slice: lấy ký tự từ 1->4 (ell)
+        document.writeln(myString.replace("Hel","Hi") + "<br>"); //.replace: thay thế chuỗi
+        document.writeln(myString.toLocaleLowerCase() + "<br>"); //đổi chữ hoa->thường;
+        document.writeln(myString.indexOf("i") + "<br>"); //kiểm tra trg chuỗi có ký tự i ko, có thì trả vi trí, ko có thì trả -1
+        document.writeln(myString.includes("e") + "<br>"); //("Ký tự cần tìm kiếm") 
+        document.writeln(myString.split('') + "<br>"); //tách chuối thành mảng ('': gặp ký tự trg dấu '' thì thay bằng dấu ,)
+        document.writeln(myString.startsWith("Kien") + "<br>"); //Kiểm tra có bắt đầu bằng ký tự bên trg("")
+
+        //NUMBER
+        let pi= 3.14159;
+        document.writeln(pi.toFixed(2) +"<br>"); // toFixed() làm tròn đến số thập phân nhất định
+        document.writeln(isNaN("10") +"<br>"); //trg () có phải là số ko
+
+        //DATE
+        let toDay = new Date(); //tạo ngày h hiện tại
+        document.writeln(toDay +"<br>");
+        let toDay1 = new Date('2023-09-26'); //tạo ngày h mong muốn
+        document.writeln(toDay1 +"<br>");
+        document.writeln(toDay.getFullYear() +"<br>"); //lấy ra năm
+        document.writeln(toDay.getMonth() +"<br>"); //lấy ra tháng (bắt đầy bằng từ 0)
+        document.writeln(toDay.getDay() +"<br>"); // lấy ra thứ ( băt đầu từ Chủ nhật = 0 )
+        document.writeln(toDay.getDate() +"<br>"); //lấy ra ngày
+        document.writeln(toDay.getMinutes() +"<br>"); //lấy ra phút
+    </script>
+</body>
+</html>
