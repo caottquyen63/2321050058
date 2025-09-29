@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //MẢNG
+        let arr = [];
+        let ten = 'ten';
+        let thongTin = {
+            ten: ten
+        }
+        document.writeln(Array.isArray(arr) + "<br>");  //kiểm tra biến có phải kiểu mảng ko, dùng thì true
+        let arr1 = [1,2,3,4,'a','b','c',2,3];
+        document.writeln(arr1.length + "<br>");  // kiểm tra số phần tử  trg mảng
+        document.writeln(arr1[2] + "<br>");  // lấy ra phần tử trg mảng (bắt đầu từ 0)
+        document.writeln(arr1.indexOf(3) + "<br>")  //kiểm tra vị trí đầu tiên xuất hiện của phần tử trg mảng
+        document.writeln(arr1.lastIndexOf(3) + "<br>")  //kiểm tra vị trí đầu tiên xuất hiện của phần tử trg
+        document.writeln(arr1 + "<br>")
+        arr1[3] = 6; //thay đổi giá trị  trg mảng
+        document.writeln(arr1 + "<br>")
+
+        let a,b,c,d;
+        a = [1,2,3]
+        b = "JavaScript";
+        c = [42,"JS"];
+        d = a.concat(b,c); //nối các mảng với nhau thành 1 mảng
+        //d = d.join("-"); // biến mảng thành 1 chuỗi, cách nhau bởi dấu trg ngoặc kép "-/:_"
+        document.writeln(d + "<br>")
+        d.pop(); // xóa phần tử cuối cùng
+        document.writeln(d + "<br>")
+        d.push("Khởi");  // thêm vào cuối mảng
+        //d.reverse();  //đảo ngược mảng
+        //d.shift();  // xóa phần tử đầu tiên
+        //d.unshift(7); // thêm phần tử vào đầu mảng
+        document.writeln(d + "<br>")
+        //document.writeln(Array.isArray(d) + "<br>")
+
+        // Câu lệnh điều kiện
+        let so = "100000000000000000000001";
+        let soCuoi = parseInt(so[so.length -1]);
+        if (soCuoi % 2 == 0) {
+            document.writeln(so + "Đây là số chẵn!" + "<br>");}
+        else {
+            document.writeln(so + "Đây là số lẻ!" + "<br>");
+        }
+
+        // ngày h
+        let now = new Date().getHours;
+
+        if (now >= 5 && now < 10 ){
+            document.writeln("Chào buổi sáng" + "<br>");
+        }
+        else if (now >=10 && now < 13){
+            document.writeln("Chào buổi trưa" + "<br>");
+        }
+        else if (now >=13 && now < 17){
+            document.writeln("Chào buổi chiều" + "<br>");
+        }
+        else if (now >=17 && now < 22){
+            document.writeln("Chào buổi tối" + "<br>");
+        }
+        else {
+            document.writeln("Chào buổi đêm" + "<br>");
+        }
+         
+        // tính tổng điểm
+        let diemA = 1;
+        let diemB = 9;
+        let diemC = 10;
+        if (diemA>=0 && diemB>=0 && diemC>=0 && diemA<= 10 && diemB<= 10 && diemC<= 10){
+            tongDiem = diemA*0.6 + diemB*0.3 + diemC*0.1;
+            if (tongDiem >= 8 && tongDiem <= 10){
+                document.writeln("Bạn được điểm A!" + "<br>")
+            }
+            else if (tongDiem >= 7 && tongDiem < 8){
+                document.writeln("Bạn được điểm B!" + "<br>")
+            }
+            else if (tongDiem >= 5 && tongDiem < 7){
+                document.writeln("Bạn được điểm C!" + "<br>")
+            }
+            else if (tongDiem >= 4 && tongDiem < 5){
+                document.writeln("Bạn được điểm D!" + "<br>")
+            }
+            else {
+                document.writeln("Bạn được điểm F!" + "<br>")
+            }
+        else {
+            document.writeln("Điểm không hợp lệ" + "<br>")}
+        }
+        </script>
+</body>
+</html>
