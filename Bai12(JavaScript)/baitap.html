@@ -1,0 +1,77 @@
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <body>
+        <h1>Tính điểm chữ</h1>
+        <h2>Biết tổng: A*0.6+B*0.3+C*0.1</h2>
+        <div>
+            Nhập điểm A:
+            <input type = 'number' id = 'diemA'>
+        </div>
+        <div>
+            Nhập điểm B:
+            <input type = 'number' id = 'diemB'>
+        </div>
+        <div>
+            Nhập điểm C:
+            <input type = 'number' id = 'diemC'>
+        </div>
+        <div>
+            <button onclick="tinhTong()">Tính tổng</button>
+        </div>
+        <div>
+            Kết quả: <input type="text" id="ketQua">
+        </div>
+        <script>
+        function tinhTong(){
+            let diemA = parseFloat(document.getElementById('diemA').value);
+            let diemB = parseFloat(document.getElementById('diemB').value);
+            let diemC = parseFloat(document.getElementById('diemC').value);
+            if (diemA>=0 && diemB>=0 && diemC>=0 && diemA<= 10 && diemB<= 10 && diemC<= 10){
+                let tongDiem = diemA*0.6 + diemB*0.3 + diemC*0.1;
+                if (tongDiem >= 8 && tongDiem <= 10){
+                    document.writeln("Bạn được điểm A!" + "<br>")
+                }
+                else if (tongDiem >= 7 && tongDiem < 8){
+                    document.writeln("Bạn được điểm B!" + "<br>")
+                }
+                else if (tongDiem >= 5 && tongDiem < 7){
+                    document.writeln("Bạn được điểm C!" + "<br>")
+                }
+                else if (tongDiem >= 4 && tongDiem < 5){
+                    document.writeln("Bạn được điểm D!" + "<br>")
+                }
+                else {
+                    document.writeln("Bạn được điểm F!" + "<br>")
+                }
+            }
+            else {
+                document.writeln("Điểm không hợp lệ" + "<br>")
+            }
+            
+            let canhBao = "";
+            if (!diemA) {
+                canhBao += "Vui lòng nhập lại điểm A:";
+            }
+            if (!diemB) {
+                canhBao += "Vui lòng nhập lại điểm B:";
+            }
+            if (!diemC) {
+                canhBao += "Vui lòng nhập lại điểm C:";
+            }
+            if(canhBao) {
+                alert(canhBao);
+            }
+            document.getElementById("ketQua").value = tinhTong;
+        }
+        </script>
+
+
+    </body>
+    </html>
+
+    
