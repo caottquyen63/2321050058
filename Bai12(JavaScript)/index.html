@@ -40,15 +40,19 @@
         <input type="number" id="soThuHai">
     </div>
     <div>
-        <button onclick="tinhTong()">Tính tổng</button>
+        <button onclick="tinhToan('cong')">Tính tổng</button>
+        <button onclick="tinhToan('tru')">Tính Hiệu</button>
+        <button onclick="tinhToan('nhan')">Tính Tích</button>
+        <button onclick="tinhToan('chia')">Tính Thương</button>
     </div>
     <div>
         Kết quả: <input type="number" id="ketQua" class="ket-qua">
     </div>
     <script>
-        function tinhTong(){
+        function tinhToan(phepTinh){
             let soThuNhat = parseFloat(document.getElementById('soThuNhat').value);
             let soThuHai = parseFloat(document.getElementById('soThuhai').value);
+            let ketQua = 0;
             let canhBao = "";
             if (!soThuNhat) {
                 canhBao += "Vui lòng nhập lại sô thứ nhất:";
@@ -59,10 +63,22 @@
             if(canhBao) {
                 alert(canhBao);
             }
-
-            let tong = soThuNhat + soThuHai;
-            document.getElementById("ketQua").value = tong;
+            if(phepTinh == 'cong'){
+                ketQua = soThuNhat + soThuHai;
+            }
+            else if(phepTinh == 'tru'){
+                ketQua = soThuNhat - soThuHai;
+            }
+            else if(phepTinh == 'nhan'){
+                ketQua = soThuNhat * soThuHai;
+            }
+            else if(phepTinh == 'chia'){
+                ketQua = soThuNhat / soThuHai;
+            }
+            document.getElementById("ketQua").value = ketQua;
         }
+        
+
     </script>
 </body>
 </html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chỉ số BMI</title>
+</head>
+<body>
+    <div>
+        <h1>Tính chỉ số BMI</h1>
+    </div>
+    <div>
+        <p> Công thức: Cân nặng/(Chiều cao*Chiều cao)</p>
+    </div>
+    <div>
+        Cân nặng:kg 
+        <input type="number" id="canNang">
+    </div>
+    <div>
+        Chiều cao:m 
+        <input type="number" id="chieuCao">
+    </div>
+    <div>
+        <button onclick="tinhChiSoBMI()">Kiểm tra chỉ số BMI</button>
+    </div>
+    <div>
+        Kết quả: <input type="text" id="ketQua">
+    </div>
+    <script>
+        function tinhChiSoBMI(){
+            let canNang = parseFloat(document.getElementById('canNang').value);
+            let chieuCao = parseFloat(document.getElementById('chieCao').value);
+            let canhBao = "";
+            if (!canNang) {
+                canhBao += "Vui lòng nhập lại cân nặng:";
+            }
+            if (!chieuCao) {
+                canhBao += "Vui lòng nhập lại chiều cao:";
+            }
+            if(canhBao) {
+                alert(canhBao);
+            }
+            let tinh = canNang/(chieuCao*chieuCao);
+            document.getElementById("ketQua").value = tinh;
+        }
+        if (tinh < 18.5)
+            <img src=''>
+
+    </script>
+
+</body>
+</html>
