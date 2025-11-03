@@ -4,47 +4,102 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chỉ số BMI</title>
+    <style>
+        body{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            gap: 30px;
+        }
+        .container{
+            display:flex;
+            justify-content: space-around;
+            align-items: center;
+            background-color: beige;
+            width: 700px;
+            height: 350px;
+        }
+        img{
+            width: 100px;
+            height: 250px;
+        }
+    </style>
 </head>
 <body>
-    <div>
-        <h1>Tính chỉ số BMI</h1>
-    </div>
-    <div>
-        <p> Công thức: Cân nặng/(Chiều cao*Chiều cao)</p>
-    </div>
-    <div>
-        Cân nặng:kg 
-        <input type="number" id="canNang">
-    </div>
-    <div>
-        Chiều cao:m 
-        <input type="number" id="chieuCao">
-    </div>
-    <div>
-        <button onclick="tinhChiSoBMI()">Kiểm tra chỉ số BMI</button>
-    </div>
-    <div>
-        Kết quả: <input type="text" id="ketQua">
+    <div class="container">
+        <div>
+            <div>
+                <h1>Tính chỉ số BMI</h1>
+            </div>
+            <div>
+                <p class="thongbao"> Công thức: Cân nặng/(Chiều cao*Chiều cao)</p>
+            </div>
+            <div>
+                Cân nặng:kg 
+                <input type="number" id="canNang">
+            </div> <br>
+            <div>
+                Chiều cao:m 
+                <input type="number" id="chieuCao">
+            </div> <br>
+            <div>
+                <button onclick="tinhChiSoBMI()" >Kiểm tra chỉ số BMI</button>
+            </div> <br>
+            <div>
+                Kết quả: <input type="text" id="ketQua">
+            </div>
+        </div>
+        <img class="anh" src="" alt="">
     </div>
     <script>
         function tinhChiSoBMI(){
             let canNang = parseFloat(document.getElementById('canNang').value);
-            let chieuCao = parseFloat(document.getElementById('chieCao').value);
+            let chieuCao = parseFloat(document.getElementById('chieuCao').value);
             let canhBao = "";
-            if (!canNang) {
-                canhBao += "Vui lòng nhập lại cân nặng:";
+            if (!canNang || canNang <= 0) {
+                canhBao += "Vui lòng nhập lại cân nặng";
             }
-            if (!chieuCao) {
-                canhBao += "Vui lòng nhập lại chiều cao:";
+            if (!chieuCao|| chieuCao <= 0) {
+                canhBao += "Vui lòng nhập lại chiều cao";
             }
             if(canhBao) {
                 alert(canhBao);
             }
             let tinh = canNang/(chieuCao*chieuCao);
             document.getElementById("ketQua").value = tinh;
+            doiCheDo(tinh);
         }
-        if (tinh < 18.5)
-            <img src=''>
+
+        function doiCheDo(tinh){
+        //Nếu chế độ đang lad sáng -> cheDo = flase
+            if (tinh < 18.5) {
+                document.getElementsByClassName('container')[0].style.backgroundColor='#7AD3F7';
+                document.getElementsByClassName('thongbao')[0].innerHTML='Bạn thiếu cân';
+                document.getElementsByClassName('anh')[0].src='anh1.jpg';
+            }
+            else if (tinh >= 18.5 && tinh <= 24.9) {
+                document.getElementsByClassName('container')[0].style.backgroundColor = '#A2B534';
+                document.getElementsByClassName('thongbao')[0].innerHTML='Bạn bình thường';
+                document.getElementsByClassName('anh')[0].src='anh5.jpg';
+            }
+            else if (tinh >= 25 && tinh <= 29.9) {
+                document.getElementsByClassName('container')[0].style.backgroundColor = '#FCD53C';
+                document.getElementsByClassName('thongbao')[0].innerHTML='Bạn thừa cân';
+                document.getElementsByClassName('anh')[0].src='anh2.jpg';
+            }
+            else if (tinh >= 30 && tinh <= 39.9) {
+                document.getElementsByClassName('container')[0].style.backgroundColor = '#F4A451';
+                document.getElementsByClassName('thongbao')[0].innerHTML='Bạn béo phì cấp 1-2';
+                document.getElementsByClassName('anh')[0].src='anh3.jpg';
+            }
+            else if (tinh >= 40) {
+                document.getElementsByClassName('container')[0].style.backgroundColor = '#F86A3A';
+                document.getElementsByClassName('thongbao')[0].innerHTML='Bạn béo phì nặng';
+                document.getElementsByClassName('anh')[0].src='anh4.jpg';
+            }
+        }
 
     </script>
 
