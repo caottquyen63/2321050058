@@ -19,7 +19,7 @@ nav{
     display:flex;
     justify-content:space-between;
 }
-ul {
+.tieude ul {
     display: flex;
     list-style: none;
     /* gap: 20px; */
@@ -147,6 +147,14 @@ footer {
     position: relative;
     border-radius: 5px 5px 0 0;
 }
+.danhsach-tt {
+    position: absolute;
+    bottom: 0px;  /* đặt khoảng cách so với đáy banner  */
+    z-index: 2; /* nằm trên lớp tối */
+    color: white;
+    padding: 20px;
+    width: 100%;
+}
 .tt {
     display:flex;
     align-items: center;
@@ -158,4 +166,28 @@ footer {
     width:100px;
     height:40px;
     border-radius: 15px;
+}
+.tt ul {
+    display: flex;
+    padding: 0;
+    margin-top: 10px;
+    align-items: center;
+}
+.trai-ler {
+    background-color: #Ff6500;
+    color:white;
+    width:100px;
+    height:40px;
+    border-radius: 15px;
+}
+/* 👇 Chỉ phủ vùng dưới banner */
+.banner::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 23%; /* 👈 điều chỉnh vùng tối (30%–50% tuỳ ý) */
+    background: rgba(0,0,0,0.5); /* 👈 độ tối (0.6 = 60%) */
+    z-index: 1; /* nằm giữa ảnh và chữ */
 }
