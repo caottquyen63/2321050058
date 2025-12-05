@@ -1,55 +1,382 @@
 CREATE DATABASE IF NOT EXISTS quan_ly_web_phim; # Chạy lệnh nhiều lần ko bị lỗi 
 
-# 1. Thể loại
+--1. Thể loại
 CREATE TABLE the_loai(
     id INT PRIMARY KEY,
     ten_the_loai VARCHAR(50)
 );
-# 2. Người dùng
-CREATE TABLE nguoi_dung(
-    id int,
+--2. Người dùng
+CREATE TABLE IF NOT EXISTS nguoi_dung(
+    id INT PRIMARY KEY,
     ten_dang_nhap VARCHAR(50),
     mat_khau VARCHAR(50),
     ho_ten VARCHAR(50),
     email VARCHAR(50),
     sdt CHAR(10),
+    ngay_sinh DATE,
     vai_tro_id INT,
-    ngay_sinh DATETIME
+    FOREIGN KEY (vai_tro_id) REFERENCES vai_tro(id)
 );
-# 3. Vai trof
-CREATE TABLE vai_tro(
-    id INT,
+--3. Vai trò
+CREATE TABLE IF NOT EXISTS vai_tro(
+    id INT PRIMARY KEY,
     ten_vai_tro VARCHAR(20)
 );
-# 4. PHIM
-CREATE TABLE phim(
+--4. PHIM
+CREATE TABLE IF NOT EXISTS phim(
     id INT PRIMARY KEY,
     ten_phim VARCHAR(100),
     dao_dien_id INT,
     nha_phat_hanh INT,
-    poster VARCHAR,
+    poster VARCHAR(255),
     quoc_gia_id INT,
     so_tap INT,
-    trailer VARCHAR
-    mo_ta TEXT
+    trailer VARCHAR(255),
+    mo_ta TEXT,
+    FOREIGN KEY (quoc_gia_id) REFERENCES quoc_gia(id),
+    FOREIGN KEY (dao_dien_id) REFERENCES nguoi_dung(id),
+    FOREIGN KEY (the_loai_id) REFERENCES the_loai(id)
 );
-# 5. Phim diễn viên
-CREATE TABLE phim_dien_vien(
-    id INT,
+--5. Phim diễn viên
+CREATE TABLE IF NOT EXISTS phim_dien_vien(
+    id INT PRIMARY KEY,
     phim_id INT,
-    dien_vien_id INT
+    dien_vien_id INT,
+    FOREIGN KEY (phim_id) REFERENCES phim(id)
+    FOREIGN KEY (dien_vien_id) REFERENCES nguoi_dung(id)
 );
-# 6. Quốc gia
-CREATE TABLE quoc_qua(
+--6. Quốc gia
+CREATE TABLE IF NOT EXISTS quoc_gia(
     id INT PRIMARY KEY,
     ten_quoc_gia VARCHAR(50)
 );
-# 7. Tập phim
-CREATE TABLE tap_phim(
+--7. Tập phim
+CREATE TABLE IF NOT EXISTS tap_phim(
     id INT PRIMARY KEY,
     so_tap INT,
-    tieu_de VARCHAR,
+    tieu_de VARCHAR(100),
     phim_id INT,
     thoi_luong float,
-    trailer VARCHAR
+    trailer VARCHAR(255),
+    FOREIGN KEY (phim_id) REFERENCES phim(id)
 );
+--8. Phim thể loại
+CREATE TABLE IF NOT EXISTS phim_the_loai(
+    id INT PRIMARY KEY,
+    phim_id INT,
+    the_loai_id INT,
+    FOREIGN KEY (phim_id) REFERENCES phim(id)
+    FOREIGN KEY (the_loai_id) REFERENCES the_loai(id)
+);
+
+--thể loại
+INSERT INTO the_loai (id, ten_the_loai) VALUES
+(1,  'Hành động'),
+(2,  'Võ thuật'),
+(3,  'Trinh thám'),
+(4,  'Hoạt hình'),
+(5,  'Hài hước'),
+(7,  'Viễn tưởng'),
+(8,  'Cổ trang'),
+(9,  'Phiêu lưu'),
+(10, 'Tâm lý'),
+(11, 'Khoa học'),
+(12, 'Âm nhạc'),
+(13, 'Truyền hình'),
+(14, 'Thuyết minh'),
+(15, 'Tình cảm'),
+(17, 'Chiến tranh'),
+(18, 'Tội phạm'),
+(19, 'Hình sự'),
+(20, 'Thể thao'),
+(21, 'Chiếu rạp'),
+(22, 'Kinh dị'),
+(23, 'Thần thoại'),
+(24, 'Anime'),
+(25, 'Xuyên không'),
+(26, 'Học đường'),
+(27, 'Giả tưởng'),
+(28, 'Chính Kịch'),
+(29, 'Kiếm hiệp'),
+(30, 'Tiên hiệp');
+
+INSERT INTO nguoi_dung 
+(id, ten_dang_nhap, mat_khau, ho_ten, email, sdt, ngay_sinh, vai_tro_id) VALUES
+(1, 'Quyen', '1234', 'Cao Thi Thu Quyen', 'quyen@gmail.com', '0123456789', '2005-03-06', 3),
+(2, 'Giang', '5678', 'Pham Huong Giang', 'giang@gmail.com', '0123456789', '2005-02-09', 4),
+(3, 'Hoai', '9101', 'Nong Thi Hoai', 'hoai@gmail.com', '0123456789', '2005-07-30', 4),
+(4, 'Linh', '1213', 'Vuong Ha Linh', 'linh@gmail.com', '0123456789', '2005-12-12', 4),
+(5, 'Vy', '1415', 'Nguyen Kieu Vy', 'vy@gmail.com', '0123456789', '2005-12-30', 4),
+(6, 'Van', '1617', 'Nguyen Thi Van', 'van@gmail.com', '0123456789', '2005-09-07', 4),
+(7, 'Hue', '1819', 'Pham Thi Hue', 'hue@gmail.com', '0123456789', '2005-02-04', 4),
+(8, 'Nga', '2021', 'Nguyen Thuy Nga', 'nga@gmail.com', '0123456789', '2005-11-25', 4),
+(9, 'LeLe', '2223', 'Le Thi Le', 'le@gmail.com', '0123456789', '2005-08-07', 4),
+(10, 'Ly', '2425', 'Ly Mai Ly', 'ly@gmail.com', '0123456789', '2005-09-16', 4),
+(11, 'Lauren', '2627', 'Lauren Schmidt Hissrich', 'lauren@gmail.com', '0123456789', '1980-01-01', 2),
+(12, 'Aof', '2829', 'Supanat Chalermchaichareonkij', 'aof@gmail.com', '0123456789', '1986-07-31', 2),
+(13, 'Phuwin', '3031', 'Phuwin Tangsakyuen', 'phuwin@gmail.com', '0123456789', '2003-07-05', 1),
+(14, 'Pond', '3233', 'Naravit Lertratkosum', 'pond@gmail.com', '0123456789', '2001-02-01', 1),
+(15, 'Prem', '3435', 'Warut Chawalitrujiwong', 'prem@gmail.com', '0123456789', '1998-03-08', 1),
+(16, 'Boun', '3637', 'Noppanut Guntachai', 'boun@gmail.com', '0123456789', '1995-07-10', 1),
+(17, 'Satang', '3839', 'Kittiphop Sereevichayasawat', 'satang@gmail.com', '0123456789', '2001-11-16', 1),
+(18, 'Sea', '4041', 'Tawinan Anukoolprasert', 'sea@gmail.com', '0123456789', '2000-05-24', 1),
+(19, 'Jimmy', '4243', 'Jitaraphol Potiwihok', 'jimmy@gmail.com', '0123456789', '1994-08-21', 1),
+(20, 'TC', '4445', 'Tiêu Chiến', 'chien@gmail.com', '0123456789', '1991-10-05', 1),
+(21, 'VNB', '4647', 'Vương Nhất Bác', 'bac@gmail.com', '0123456789', '1997-08-05', 1),
+(22, 'BTN', '4849', 'Bành Tiểu Nhiễm', 'nhiem@gmail.com', '0123456789', '1992-09-03', 1),
+(23, 'TTH', '5051', 'Trần Tinh Húc', 'huc@gmail.com', '0123456789', '1990-05-21', 1),
+(24, 'LT', '5253', 'Lý Thấm', 'tham@gmail.com', '0123456789', '1990-02-28', 1),
+(25, 'TTV', '5455', 'Trần Triết Viễn', 'vien@gmail.com', '0123456789', '1997-11-11', 1),
+(26, 'NGL', '5657', 'Nhậm Gia Luân', 'luan@gmail.com', '0123456789', '1990-11-12', 1),
+(27, 'TN', '5859', 'Thành Nghị', 'nghi@gmail.com', '0123456789', '1990-02-17', 1),
+(28, 'LND', '6061', 'Lý Nhất Đồng', 'dong@gmail.com', '0123456789', '1992-06-06', 1),
+(29, 'Henry', '6263', 'Henry Cavill', 'henry@gmail.com', '0123456789', '1983-05-05', 1),
+(30, 'Anya', '6465', 'Anya Chalotra', 'anya@gmail.com', '0123456789', '1996-07-21', 1),
+(31, 'katsuya', '6667', 'Katsuya Shigehara', 'kat@gmail.com', '0123456789', '1996-08-21', 2),
+(32, 'huyen', '6869', 'Đặng Thái Huyền', 'huyen@gmail.com', '0123456789', '1996-08-22', 2),
+(33, 'vu', '7071', 'Sủi Cảo', 'vu@gmail.com', '0123456789', '1990-08-22', 2),
+(34, 'muu', '7273', 'Trương Nghệ Mưu', 'muu@gmail.com', '0123456789', '1970-07-03', 2),
+(35, 'an', '7475', 'Lý An', 'an@gmail.com', '0123456789', '1981-06-16', 2),
+(36, 'ca', '7677', 'Trần Khải Ca', 'ca@gmail.com', '0123456789', '1983-06-10', 2),
+(37, 'cuong', '7879', 'Phùng Tiểu Cương', 'cuong@gmail.com', '0123456789', '1978-03-28', 2),
+(38, 'sam', '8081', 'Ngô Vũ Sâm', 'sam@gmail.com', '0123456789', '1988-10-24', 2),
+(39, 've', '8283', 'Vương Gia Vệ', 've@gmail.com', '0123456789', '1970-11-25', 2),
+(40, 'kha', '8485', 'Giả Chương Kha', 'kha@gmail.com', '0123456789', '1996-01-22', 2),
+(41, 'anh', '8687', 'Lê Hạ Anh', 'anh@gmail.com', '0123456789', '1992-06-07', 1),
+(42, 'nha', '8889', 'Lâm Thanh Nhã', 'nha@gmail.com', '0123456789', '1992-06-08', 1),
+(43, 'ami', '9091', 'Ami Koshimizu', 'ami@gmail.com', '0123456789', '1999-08-27', 1),
+(44, 'atsuko', '9293', 'Atsuko Yuya', 'atsuko@gmail.com', '0123456789', '1996-08-08', 1),
+(45, 'tay', '9495', 'Tawan Vihokratana', 'tay@gmail.com', '0123456789', '1991-07-20', 1),
+(46, 'new', '9697', 'Thitipoom Techaapaikhun', 'new@gmail.com', '0123456789', '1993-01-30', 1),
+(47, 'off', '9899', 'Jumpol Adulkittiporn', 'off@gmail.com', '0123456789', '1991-01-20', 1),
+(48, 'gun', '1001', 'Atthaphan Phunsawat', 'gun@gmail.com', '0123456789', '1993-10-04', 1),
+(49, 'win', '0210', 'Metawin Opas-iamkajorn', 'win@gmail.com', '0123456789', '1999-02-21', 1),
+(50, 'dinh', '0310', 'Lữ Diễm Đình', 'dinh@gmail.com', '0123456789', '1988-10-29', 1),
+(51, 'phu', '0410', 'Sâm Sắt Phu', 'phu@gmail.com', '0123456789', '1990-09-15', 1),
+(52, 'thua', '5106', 'Lưu Hiên Thừa', 'thua@gmail.com', '0123456789', '2004-01-01', 1);
+
+-- phim
+INSERT INTO phim 
+(id, ten, dao_dien_id, nha_phat_hanh, poster, quoc_gia_id, so_tap, trailer, mo_ta) VALUES
+(1, 'Conan: Dư ảnh của độc nhãn', 31, 'TMS Entertainme', '../Bai14(SQL)/poster_phim/1_conan.png', 2, 1, 'https://www.youtube.com/watch?v=dz5mN-iIC4g', 'Một vụ tấn công bí ẩn tại đài quan sát Nobeyama kéo Conan và các thám tử vào cuộc điều tra rùng rợn giữa núi tuyết. Thanh tra Yamato Kansuke buộc phải đối mặt với quá khứ đau thương từ vụ tuyết lở nhiều năm trước. Càng điều tra, những mối liên hệ mờ ám giữa các nhân vật từ Tokyo đến Nagano dần hiện rõ, trong đó ký ức của Kansuke chính là mảnh ghép quyết định sự thật.'),
+(2, 'Mưa Đỏ', 32, 'Galaxy Studio', 'Bai14(SQL)/poster_phim/2_muado.png', 1, 1, 'https://www.youtube.com/watch?v=BD6PoZJdt_M', '“Mưa Đỏ” – Phim truyện điện ảnh về đề tài chiến tranh cách mạng, kịch bản của nhà văn Chu Lai, lấy cảm hứng và hư cấu từ sự kiện 81 ngày đêm chiến đấu anh dũng, kiên cường của nhân dân và cán bộ, chiến sĩ bảo vệ Thành Cổ Quảng Trị năm 1972. Tiểu đội 1 gồm toàn những thanh niên trẻ tuổi và đầy nhiệt huyết là một trong những đơn vị chiến đấu, bám trụ tại trận địa khốc liệt này. Bộ phim là khúc tráng ca bằng hình ảnh, là nén tâm nhang tri ân và tưởng nhớ những người con đã dâng hiến tuổi thanh xuân cho đất nước, mang âm hưởng của tình yêu, tình đồng đội thiêng liêng, là khát vọng hòa bình, hoà hợp dân tộc của nhân dân Việt Nam.'),
+(3, 'Me And Thee', 12, 'GMMTV', 'Bai14(SQL)/poster_phim/3_meandthee.png', 4, 10, 'https://www.youtube.com/watch?v=PXqpISTPse8', 'Sau cuộc gặp gỡ đầu tiên đầy kịch tính, nhiếp ảnh gia Peach trở thành huấn luyện viên cuộc sống nghiệp dư cho doanh nhân giàu có Thee. Mải mê phim truyền hình và không còn biết đến giá trị của đồng baht, Khun Thee cần phải nhìn nhận lại thực tế.'),
+(4, 'Black List', 12, 'GMMTV', 'Bai14(SQL)/poster_phim/4_blacklist.png', 4, 12, 'https://www.youtube.com/watch?v=QbU4B3r2uvA', 'Phim tình cảm Thái Lan xoay loanh quanh ngôi trường trung học Akeanan, một nơi có hệ thống đào tạo bày bản và vượt trội về mọi mặt. Tuy nhiên, sự mất tích của cô nữ sinh Fah khiến mọi chuyện trở thành rắc rối, cảnh sát lẫn các học trò trong trường đều không thể tìm thấy dấu vết nào của cô bé. Lúc này, anh trai Traffic đến đây và bắt đầu tìm hiểu về mọi việc. Anh tình cờ được mời vào một nhóm nam sinh có tên Blacklist chuyên điều tra các sự kiện bí hiểm trong trường.'),
+(5, 'We Are The Series', 12, 'GMMTV', 'Bai14(SQL)/poster_phim/5_weare.png', 4, 16, 'https://www.youtube.com/watch?v=LHiFM1mfahk', 'We Are Series: Chính Là Ta Yêu Nhau là câu chuyện về nhóm bạn đại học trải qua những biến động trong cuộc sống. Dù họ cố gắng học tập chăm chỉ, họ vẫn phải đối mặt với những tình huống phức tạp và rắc rối lãng mạn. Họ là bạn bè, nhưng cũng trở thành kẻ thù của nhau. Họ có tình cảm, tán tỉnh và đôi khi gặp khó khăn trong việc yêu nhau. Cuộc sống của họ đầy sự phức tạp và thú vị, và chúng ta hãy cùng khám phá những mối quan hệ đặc biệt này cùng họ.'),
+(6, 'Dark Blue Kiss The Series', 12, 'GMMTV', 'Bai14(SQL)/poster_phim/6_darkbluekiss.png', 4, 12, 'https://www.youtube.com/watch?v=zRr2QTHukzo', 'Dark Blue Kiss là một bộ phim đam mỹ (boy love) đầy cảm xúc, xoay quanh mối quan hệ phức tạp giữa hai nhân vật chính Kao và Pete. Kao và Pete từng bước tiến xa hơn trong mối quan hệ tình cảm của họ, nhưng họ luôn giữ kín và che giấu điều này khỏi mọi người, đặc biệt là mẹ của Kao. Sự lo lắng rằng một ngày nào đó bí mật của họ sẽ bị phát hiện khiến họ phải đối mặt với nhiều thách thức. Khi Non, con trai của ông chủ mà mẹ Kao giới thiệu, xuất hiện và bắt đầu quan tâm đến Kao, Pete không thể kìm lòng và bắt đầu trải qua cảm xúc ghen tuông. Sự hiện diện của Non đã tạo ra sự căng thẳng trong mối quan hệ giữa Kao và Pete, đẩy họ đến những thái độ và xung đột không lường trước. Trên một diễn biến khác, Sun đã quyết định từ bỏ tình cảm đơn phương của mình với Kao, còn Mork lại xuất hiện trong cuộc sống của Sun nhiều hơn. Sun cố gắng ngăn Mork lại gần Rain, tuy nhiên điều này đã khiến sự quan tâm của Mork được thu hút bởi Sun. Dù có những xung đột ban đầu, Sun và Mork bắt đầu hiểu và quan tâm đến nhau hơn, tạo nên một dấu ấn đầy cảm động trong bộ phim.'),
+(7, 'The Gifted', 12, 'GMMTV', 'Bai14(SQL)/poster_phim/7_thegifted.png', 4, 13, 'https://www.youtube.com/watch?v=wB-F9hvQKRU', 'Một nhóm học sinh trong chương trình “Gifted” phát hiện bản thân có những năng lực đặc biệt và phải đối mặt với bí mật đen tối của ngôi trường.'),
+(8, 'Theory of Love', 12, 'GMMTV', 'Bai14(SQL)/poster_phim/8_theoryoflove.png', 4, 12, 'https://www.youtube.com/watch?v=UQT1x-4ciI4', 'Ba người bạn thân trong khoa điện ảnh, trong đó có một người thầm yêu người còn lại nhưng phải chịu đựng tình cảm đơn phương kéo dài nhiều năm.'),
+(9, 'Fish Upon the Sky: Cá Trên Trời', 12, 'GMMTV', 'Bai14(SQL)/poster_phim/9_fishuponthesky.png', 4, 12, 'https://www.youtube.com/watch?v=nwtaq56pgIo', 'Một sinh viên nha khoa hiền lành quyết tâm “lột xác” để chinh phục crush, nhưng lại bị một chàng trai khác vô tình chen vào khiến mọi chuyện rối tung.'),
+(10, 'Dư Sinh Xin Chỉ Giáo Nhiều Hơn', 37, 'Tencent Video', 'Bai14(SQL)/poster_phim/10_dusinh.png', 7, 32, 'https://www.youtube.com/watch?v=TmgMtOvLptU', 'Một nữ sinh đại học gặp gỡ một bác sĩ trẻ tài giỏi. Hai người từ xa lạ trở nên thân quen và cùng chữa lành những tổn thương trong cuộc sống.'),
+(11, 'Last Twilight', 12, 'GMMTV', 'Bai14(SQL)/poster_phim/11_lasttwilight.png', 4, 12, 'https://www.youtube.com/watch?v=CWO7ab2T10E', 'Một chàng trai bị suy giảm thị lực trở thành người trông trẻ cho một cậu bé khiếm thị kiêu ngạo. Từ đó, cả hai dần xích lại gần nhau.'),
+(12, '2gether: The Series', 12, 'GMMTV', 'Bai14(SQL)/poster_phim/12_2gether.png', 4, 13, 'https://www.youtube.com/watch?v=6OQl08Weel4', 'Nữ thần của trường theo đuổi Tine, khiến cậu phải nhờ Sarawat giả làm bạn trai. Mối quan hệ giả tạo dần trở thành thật.'),
+(13, 'Not Me', 12, 'GMMTV', 'Bai14(SQL)/poster_phim/13_notme.png', 4, 12, 'https://www.youtube.com/watch?v=Q91hKXjq_3s', 'Sinh đôi tách biệt từ nhỏ. Một người bị hại nặng, người còn lại giả dạng anh trai để thâm nhập vào một nhóm bạn và tìm ra kẻ thủ ác.'),
+(14, 'Never Let Me Go', 12, 'GMMTV', 'Bai14(SQL)/poster_phim/14_nerverletmego.png', 4, 12, 'https://www.youtube.com/watch?v=p8AwJVKAJAM', 'Con trai của ông chủ một khu nghỉ dưỡng bị truy sát và được một vệ sĩ trẻ tuổi bảo vệ. Hai người dần trở nên quan trọng với nhau.'),
+(15, 'Trần Tình Lệnh', 34, 'Tencent Video', 'Bai14(SQL)/poster_phim/15_trantinhlenh.png', 7, 50, 'https://www.youtube.com/watch?v=2ldvydu34Is', 'Ngụy Vô Tiện và Lam Vong Cơ cùng điều tra những thế lực tà ác, dẫn đến âm mưu lớn chấn động tu chân giới.'),
+(16, 'Tàng Hải Truyện', 35, 'Tencent Video', 'Bai14(SQL)/poster_phim/16_tanghaitruyen.png', 7, 40, 'https://www.youtube.com/watch?v=aATZWj4yLQo', 'Tàng Hải Truyện kể về Uông Tàng Hải, người sống ẩn mười năm để điều tra chân tướng gia tộc bị hãm hại. Anh trở lại triều đình, vừa phục thù vừa bảo vệ thiên hạ, mở ra loạt âm mưu và đấu trí căng thẳng.'),
+(17, 'Phượng Hoàng Đài Thượng', 36, 'Tencent Video', 'Bai14(SQL)/poster_phim/17_phuonghoangdaithuong.png', 7, 35, 'https://www.youtube.com/watch?v=pwXcl_uQH3w', 'Một họa sĩ thiên tài xuyên không vào thế giới tu tiên, gặp gỡ nam chính lạnh lùng và cùng nhau vượt qua nhiều kiếp nạn.'),
+(18, 'Đông Cung', 37, 'iQiyi', 'Bai14(SQL)/poster_phim/18_dongcung.png', 7, 52, 'https://www.youtube.com/watch?v=VashmXyJZDA', 'Công chúa Tây Lương bị cuốn vào cuộc hôn nhân chính trị với thái tử Đông Cung, dẫn đến bi kịch tình yêu đầy đau thương.'),
+(19, 'Thiên Địa Kiếm Tâm', 38, 'iQiyi', 'Bai14(SQL)/poster_phim/19_thiendiakiemtam.png', 7, 36, 'https://www.youtube.com/watch?v=tkenSqHiX2I', 'Câu chuyện về kiếm tu và ma tộc, xoay quanh cuộc chiến bảo vệ thiên hạ cũng như mối tình đầy thử thách của cặp đôi chính.'),
+(20, 'Dữ Quân Ca', 39, 'Tencent Video', 'Bai14(SQL)/poster_phim/20_duquanca.png', 7, 49, 'https://www.youtube.com/watch?v=fj9OoSG-nfk', 'Một cô gái cải trang thành nam để tìm cơ hội báo thù. Trong cung, nàng gặp hoàng tử tài giỏi và bị cuốn vào vòng xoáy tranh quyền.'),
+(21, 'Khánh Dư Niên', 40, 'WeTV', 'Bai14(SQL)/poster_phim/21_khanhdunien.png', 7, 30, 'https://www.youtube.com/watch?v=iIJ5HUEnMgk', 'Cổ Kiều – một nữ game thủ tài năng – kết đôi trong game với đại thần Tiêu Nại, sau đó phát triển thành tình yêu đời thật.'),
+(22, 'Khi Anh Chạy Về Phía Em', 34, 'WeTV', 'Bai14(SQL)/poster_phim/22_khianhchayvephiaem.png', 7, 30, 'https://www.youtube.com/watch?v=JqIllOSkYfQ', 'Câu chuyện tình thanh xuân nhẹ nhàng giữa cô nữ sinh hướng nội và chàng trai tỏa sáng như mặt trời.'),
+(23, 'Nhập Thanh Vân', 35, 'Tencent Video', 'Bai14(SQL)/poster_phim/23_nhapthanhvan.png', 7, 24, 'https://www.youtube.com/watch?v=3-fDszFBLU4', 'Một chàng trai mang trọng trách diệt yêu, trong hành trình vô tình gặp gỡ và phải bảo vệ một cô gái mang bí mật lớn.'),
+(24, 'Phó Sơn Hải', 36, 'Tencent Video', 'Bai14(SQL)/poster_phim/24_phosonhai.png', 7, 40, 'https://www.youtube.com/watch?v=km9F4c7hCjs', 'Một câu chuyện huyền huyễn kể về mối nhân duyên giữa thần tiên – yêu tộc, và những thử thách tình yêu vượt thời gian.'),
+(25, 'Nhất Tiếu Tùy Ca', 37, 'Tencent Video', 'Bai14(SQL)/poster_phim/25_nhattieutuyca.png', 7, 38, 'https://www.youtube.com/watch?v=DDsKLOR9tsI', 'Một cô gái mạnh mẽ vô tình gặp gỡ chàng công tử lạnh lùng, từ đó mở ra hành trình yêu – hận đầy thú vị trong bối cảnh cổ trang.'),
+(26, 'Na Tra 2: Ma Đồng Náo Hải', 33, 'Beijing Enlight Pictures', 'Bai14(SQL)/poster_phim/27_natra2.png', 7, 1, 'https://www.youtube.com/watch?v=q2YIa0WjMPM', 'Phần tiếp theo của loạt phim Na Tra, xoay quanh hành trình trưởng thành và chiến đấu chống lại thế lực tà ác mạnh hơn.'),
+(27, 'Na Tra: Ma Đồng Giáng Thế', 33, 'Beijing Enlight Pictures', 'Bai14(SQL)/poster_phim/26_natra1.png', 7, 1, 'https://www.youtube.com/watch?v=yCJy9roIv8Q', 'Na Tra đấu tranh giữa thiên mệnh và bản thân, tìm cách chứng minh mình không phải là yêu ma gây họa cho nhân gian.'),
+(28, 'Trận Chiến Sau Trận chiến', 11, 'Toho', 'Bai14(SQL)/poster_phim/28_tranchien.png', 2, 1, 'https://www.youtube.com/watch?v=QSgn323cXpc', 'Một thế giới tưởng tượng nơi các nghề nghiệp, quái vật và kỹ năng chiến đấu được xây dựng như game RPG. Nhân vật chính muốn trở thành người mạnh nhất.'),
+(29, 'Điện Thoại Đen 2', 11, 'CJ Entertainment', 'Bai14(SQL)/poster_phim/29_dienthoaiden2.png', 3, 1, 'https://www.youtube.com/watch?v=K4Ml_YDwfoU', 'Một kẻ sát nhân dùng chiếc điện thoại bí ẩn để thao túng và đe dọa nạn nhân. Câu chuyện mang màu sắc kinh dị – giật gân.'),
+(30, 'Thợ Săn Quái Vật', 11, 'Little Schmidt Productions', 'Bai14(SQL)/poster_phim/30_thosanquayvat.png', 5, 8, 'https://www.youtube.com/watch?v=puQyZsaTtqY', 'The Witcher được chuyển thể từ bộ tiểu thuyết nổi tiếng của nhà văn Ba Lan Andrzej Sapkowski, cũng như loạt game ăn khách cùng tên. Bối cảnh của The Witcher đặt tại một vùng đất hư cấu có tên Đại Lục (The Continent), tràn ngập những loài quái vật nguy hiểm. Một nhóm những chiến binh sở hữu siêu năng lực được tạo ra, được gọi là Witcher để săn lùng và tiêu diệt chúng.');
+
+-- vai trò
+INSERT INTO vai_tro (id, ten_vai_tro) VALUES
+(1, 'Diễn viên'),
+(2, 'Đạo diễn'),
+(3, 'admin'),
+(4, 'user');
+
+
+--phim_dien_vien
+INSERT INTO phim_dien_vien (id, phim_id, dien_vien_id) VALUES
+(1, 1, 43),
+(2, 1, 44),
+(3, 2, 41),
+(4, 2, 42),
+(5, 3, 13),
+(6, 3, 14),
+(7, 4, 13),
+(8, 5, 13),
+(9, 5, 14),
+(10, 5, 17),
+(11, 6, 45),
+(12, 7, 13),
+(13, 9, 13),
+(14, 9, 14),
+(15, 8, 47),
+(16, 10, 20),
+(17, 11, 18),
+(18, 11, 19),
+(19, 12, 49),
+(20, 13, 47),
+(21, 13, 48),
+(22, 14, 13),
+(23, 14, 14),
+(24, 15, 20),
+(25, 15, 21),
+(26, 17, 22),
+(27, 18, 22),
+(28, 18, 23),
+(29, 19, 27),
+(30, 19, 28),
+(31, 20, 27),
+(32, 21, 20),
+(33, 17, 26),
+(34, 22, 21),
+(35, 22, 22),
+(36, 23, 23),
+(37, 23, 24),
+(38, 24, 27),
+(39, 24, 25),
+(40, 25, 24),
+(41, 25, 25),
+(42, 6, 46),
+(43, 8, 48),
+(44, 16, 20),
+(45, 26, 51),
+(46, 26, 52),
+(47, 27, 51),
+(48, 27, 52),
+(49, 21, 24),
+(50, 28, 29),
+(51, 28, 30),
+(52, 29, 29),
+(53, 29, 30),
+(54, 30, 29),
+(55, 30, 30);
+
+--quốc qia
+INSERT INTO quoc_gia (id, ten_quoc_gia) VALUES
+(1, 'Việt Nam'),
+(2, 'Nhật Bản'),
+(3, 'Hàn Quốc'),
+(4, 'Thái Lan'),
+(5, 'Mỹ'),
+(6, 'Anh'),
+(7, 'Trung Quốc');
+
+-- Tập phim
+INSERT INTO tap_phim (id, so_tap, tieu_de, phim_id, thoi_luong, trailer) VALUES
+(1, 1, '', 1, 130, 'https://www.youtube.com/watch?v=dz5mN-iIC4g'),
+(2, 1, '', 2, 120, 'https://www.youtube.com/watch?v=BD6PoZJdt_M'),
+(3, 10, '', 3, 50, 'https://www.youtube.com/watch?v=PXqpISTPse8'),
+(4, 12, '', 4, 60, 'https://www.youtube.com/watch?v=QbU4B3r2uvA'),
+(5, 16, '', 5, 50, 'https://www.youtube.com/watch?v=LHiFM1mfahk'),
+(6, 12, '', 6, 50, 'https://www.youtube.com/watch?v=zRr2QTHukzo'),
+(7, 13, '', 7, 60, 'https://www.youtube.com/watch?v=wB-F9hvQKRU'),
+(8, 12, '', 8, 55, 'https://www.youtube.com/watch?v=UQT1x-4ciI4'),
+(9, 12, '', 9, 50, 'https://www.youtube.com/watch?v=nwtaq56pgIo'),
+(10, 32, '', 10, 45, 'https://www.youtube.com/watch?v=TmgMtOvLptU'),
+(11, 12, '', 11, 50, 'https://www.youtube.com/watch?v=CWO7ab2T10E'),
+(12, 13, '', 12, 50, 'https://www.youtube.com/watch?v=6OQl08Weel4'),
+(13, 12, '', 13, 50, 'https://www.youtube.com/watch?v=Q91hKXjq_3s'),
+(14, 12, '', 14, 55, 'https://www.youtube.com/watch?v=p8AwJVKAJAM'),
+(15, 50, '', 15, 45, 'https://www.youtube.com/watch?v=2ldvydu34Is'),
+(16, 40, '', 16, 45, 'https://www.youtube.com/watch?v=aATZWj4yLQo'),
+(17, 35, '', 17, 45, 'https://www.youtube.com/watch?v=pwXcl_uQH3w'),
+(18, 52, '', 18, 45, 'https://www.youtube.com/watch?v=VashmXyJZDA'),
+(19, 36, '', 19, 45, 'https://www.youtube.com/watch?v=tkenSqHiX2I'),
+(20, 49, '', 20, 45, 'https://www.youtube.com/watch?v=fj9OoSG-nfk'),
+(21, 30, '', 21, 45, 'https://www.youtube.com/watch?v=iIJ5HUEnMgk'),
+(22, 30, '', 22, 45, 'https://www.youtube.com/watch?v=JqIllOSkYfQ'),
+(23, 24, '', 23, 45, 'https://www.youtube.com/watch?v=3-fDszFBLU4'),
+(24, 40, '', 24, 45, 'https://www.youtube.com/watch?v=km9F4c7hCjs'),
+(25, 38, '', 25, 45, 'https://www.youtube.com/watch?v=DDsKLOR9tsI'),
+(26, 1, '', 26, 130, 'https://www.youtube.com/watch?v=q2YIa0WjMPM'),
+(27, 1, '', 27, 130, 'https://www.youtube.com/watch?v=yCJy9roIv8Q'),
+(28, 1, '', 28, 170, 'https://www.youtube.com/watch?v=QSgn323cXpc'),
+(29, 1, '', 29, 114, 'https://www.youtube.com/watch?v=K4Ml_YDwfoU'),
+(30, 8, '', 30, 60, 'https://www.youtube.com/watch?v=puQyZsaTtqY');
+
+--Phim thể loại
+INSERT INTO phim_the_loai (id, phim_id, the_loai_id) VALUES
+(1,1,4),
+(2,1,3),
+(3,1,24),
+(4,2,31),
+(5,2,32),
+(6,3,5),
+(7,3,15),
+(8,4,10),
+(9,4,13),
+(10,4,26),
+(11,5,15),
+(12,5,5),
+(13,7,10),
+(14,7,26),
+(15,7,13),
+(16,6,5),
+(17,6,15),
+(18,8,5),
+(19,8,15),
+(20,9,5),
+(21,9,15),
+(22,10,15),
+(23,10,13),
+(24,11,15),
+(25,12,5),
+(26,12,15),
+(27,13,10),
+(28,13,15),
+(29,14,15),
+(30,15,3),
+(31,15,9),
+(32,15,27),
+(33,16,8),
+(34,16,10),
+(35,16,28),
+(36,17,8),
+(37,17,28),
+(38,18,8),
+(39,18,28),
+(40,19,8),
+(41,19,15),
+(42,19,25),
+(43,20,3),
+(44,20,8),
+(45,20,25),
+(47,21,8),
+(48,21,28),
+(49,22,26),
+(50,22,15),
+(51,23,25),
+(52,23,29),
+(53,23,15),
+(54,24,30),
+(55,24,27),
+(56,25,28),
+(57,25,29),
+(58,25,8),
+(59,26,4),
+(60,26,7),
+(61,26,9),
+(62,26,30),
+(63,27,4),
+(64,27,7),
+(65,27,9),
+(66,27,30),
+(67,28,1),
+(68,28,2),
+(69,28,7),
+(70,28,9),
+(71,28,21),
+(72,29,18),
+(73,29,1),
+(74,29,10),
+(75,29,21),
+(77,29,22),
+(78,30,27),
+(79,30,1),
+(80,30,10),
+(81,30,21),
+(82,30,22);
